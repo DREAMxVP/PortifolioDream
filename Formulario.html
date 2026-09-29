@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+   <title>Conte sobre seu projeto | Abel Macena da Silva</title>
+   <meta name="description" content="Preencha o formulário e conte o que você precisa para o seu site ou projeto.">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet">
+   <style>
+      :root {
+         --bg: #EEF2F7;
+         --surface: #FFFFFF;
+         --ink: #14213D;
+         --muted: #4C5A75;
+         --line: #CBD5E4;
+         --accent: #2B4EFF;
+         --accent-ink: #FFFFFF;
+         --tag: #DDE5FF;
+         --err: #B3261E;
+         --head: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+         --body: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+         box-sizing: border-box;
+         padding-top: env(safe-area-inset-top, 0px);
+         padding-bottom: env(safe-area-inset-bottom, 0px)
+      }
+
+      @media (prefers-color-scheme:dark) {
+         :root:not([data-theme="light"]) {
+            --bg: #0F1626;
+            --surface: #172038;
+            --ink: #E8EDF8;
+            --muted: #9AA8C6;
+            --line: #2A3757;
+            --accent: #7C9BFF;
+            --accent-ink: #0F1626;
+            --tag: #22305A;
+            --err: #FF8A80
+         }
+      }
+
+      :root[data-theme="dark"] {
+         --bg: #0F1626;
+         --surface: #172038;
+         --ink: #E8EDF8;
+         --muted: #9AA8C6;
+         --line: #2A3757;
+         --accent: #7C9BFF;
+         --accent-ink: #0F1626;
+         --tag: #22305A;
+         --err: #FF8A80
+      }
+
+      *,
+      *::before,
+      *::after {
+         box-sizing: inherit
+      }
+
+      html {
+         scroll-padding-top: env(safe-area-inset-top, 0px)
+      }
+
+      body {
+         margin: 0;
+         background: var(--bg);
+         color: var(--ink);
+         font: 400 1.0625rem/1.6 var(--body)
+      }
+
+      :focus-visible {
+         outline: 3px solid var(--accent);
+         outline-offset: 2px;
+         border-radius: 4px
+      }
+
+      .wrap {
+         max-width: 720px;
+         margin: 0 auto;
+         padding: 2.5rem 1.25rem 4rem
+      }
+
+      .back {
+         display: inline-block;
+         margin-bottom: 1.5rem;
+         color: var(--muted);
+         text-decoration: none;
+         font-weight: 500
+      }
+
+      .back:hover {
+         color: var(--ink)
+      }
+
+      h1 {
+         font: 800 clamp(2.2rem, 8vw, 3.4rem)/1 var(--head);
+         letter-spacing: -.03em;
+         margin: 0 0 1rem
+      }
+
+      h1 span {
+         color: var(--accent)
+      }
+
+      .intro {
+         color: var(--muted);
+         margin: 0 0 2rem;
+         max-width: 34rem
+      }
+
+      form {
+         display: grid;
+         gap: 1.5rem
+      }
+
+      fieldset {
+         border: 1px solid var(--line);
+         background: var(--surface);
+         border-radius: .75rem;
+         padding: 1.25rem 1.25rem 1.5rem;
+         margin: 0;
+         display: grid;
+         gap: 1.1rem
+      }
+
+      legend {
+         font: 700 1.15rem var(--head);
+         padding: 0 .5rem
+      }
+
+      label,
+      .lbl {
+         display: block;
+         font-weight: 700;
+         margin-bottom: .35rem
+      }
+
+      .hint {
+         font-weight: 400;
+         color: var(--muted);
+         font-size: .95rem
+      }
+
+      input[type=text],
+      input[type=tel],
+      input[type=email],
+      select,
+      textarea {
+         width: 100%;
+         padding: .75rem .9rem;
+         border: 1.5px solid var(--line);
+         border-radius: .55rem;
+         background: var(--bg);
+         color: var(--ink);
+         font: inherit
+      }
+
+      textarea {
+         min-height: 7rem;
+         resize: vertical
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+         border-color: var(--accent);
+         outline: none;
+         box-shadow: 0 0 0 3px var(--tag)
+      }
+
+      .opts {
+         display: flex;
+         flex-wrap: wrap;
+         gap: .5rem
+      }
+
+      .opts label {
+         margin: 0;
+         font-weight: 500;
+         display: inline-flex;
+         align-items: center;
+         gap: .45rem;
+         border: 1.5px solid var(--line);
+         border-radius: .55rem;
+         padding: .5rem .8rem;
+         cursor: pointer;
+         background: var(--bg)
+      }
+
+      .opts label:has(input:checked) {
+         border-color: var(--accent);
+         background: var(--tag)
+      }
+
+      .opts input {
+         accent-color: var(--accent);
+         width: 1.05rem;
+         height: 1.05rem
+      }
+
+      .row {
+         display: grid;
+         gap: 1.1rem
+      }
+
+      @media(min-width:640px) {
+         .row {
+            grid-template-columns: 1fr 1fr
+         }
+      }
+
+      .hp {
+         position: absolute;
+         left: -9999px;
+         height: 0;
+         overflow: hidden
+      }
+
+      .err {
+         color: var(--err);
+         font-size: .95rem;
+         margin: .3rem 0 0;
+         display: none
+      }
+
+      .bad .err {
+         display: block
+      }
+
+      .bad input,
+      .bad select,
+      .bad textarea {
+         border-color: var(--err)
+      }
+
+      .btns {
+         display: flex;
+         flex-wrap: wrap;
+         gap: .75rem
+      }
+
+      .btn {
+         padding: .9rem 1.5rem;
+         border-radius: .6rem;
+         border: 2px solid var(--accent);
+         font: 700 1rem var(--body);
+         cursor: pointer;
+         background: var(--accent);
+         color: var(--accent-ink)
+      }
+
+      .btn.s {
+         background: transparent;
+         color: var(--ink);
+         border-color: var(--line)
+      }
+
+      .btn:hover {
+         border-color: var(--ink)
+      }
+
+      .note {
+         color: var(--muted);
+         font-size: .95rem;
+         margin: 0
+      }
+
+      #result {
+         display: none;
+         background: var(--surface);
+         border: 1px solid var(--line);
+         border-left: 6px solid var(--accent);
+         border-radius: .75rem;
+         padding: 1.25rem
+      }
+
+      #result pre {
+         white-space: pre-wrap;
+         word-break: break-word;
+         font: inherit;
+         margin: .75rem 0 0;
+         color: var(--muted)
+      }
+   </style>
+</head>
+
+<body>
+   <div class="wrap">
+      <a class="back" href="https://github.com/DREAMxVP">← Voltar ao portfólio</a>
+      <h1>Conte sobre o seu <span>projeto</span></h1>
+      <p class="intro">Responda o que souber. Não precisa saber termos técnicos: com essas informações eu entendo o que
+         você precisa e retorno com uma proposta.</p>
+
+      <form id="f" novalidate>
+         <div class="hp" aria-hidden="true"><label>Não preencha <input type="text" name="site" tabindex="-1"
+                  autocomplete="off"></label></div>
+
+         <fieldset>
+            <legend>Seus dados</legend>
+            <div class="row">
+               <div data-f><label for="nome">Nome</label><input type="text" id="nome" name="nome" autocomplete="name"
+                     required>
+                  <p class="err">Informe seu nome.</p>
+               </div>
+               <div data-f><label for="contato">WhatsApp ou e-mail</label><input type="text" id="contato" name="contato"
+                     autocomplete="off" required>
+                  <p class="err">Informe um contato para eu responder.</p>
+               </div>
+            </div>
+            <div><label for="empresa">Nome da empresa ou do projeto <span class="hint">(opcional)</span></label><input
+                  type="text" id="empresa" name="empresa" autocomplete="organization"></div>
+         </fieldset>
+
+         <fieldset>
+            <legend>O que você precisa</legend>
+            <div data-f><label for="tipo">Tipo de projeto</label>
+               <select id="tipo" name="tipo" required>
+                  <option value="">Selecione</option>
+                  <option>Site institucional (apresentar minha empresa)</option>
+                  <option>Portfólio pessoal ou profissional</option>
+                  <option>Página de vendas / landing page</option>
+                  <option>Catálogo ou loja virtual</option>
+                  <option>Sistema web (cadastros, painel, controle)</option>
+                  <option>Aplicativo Android</option>
+                  <option>Melhoria em um site ou sistema que já existe</option>
+                  <option>Ainda não sei / outro</option>
+               </select>
+               <p class="err">Escolha uma opção.</p>
+            </div>
+            <div data-f><label for="desc">Descreva sua ideia</label><textarea id="desc" name="desc" required
+                  placeholder="O que é o negócio ou projeto? O que o site ou sistema precisa fazer?"></textarea>
+               <p class="err">Conte um pouco sobre o que você quer.</p>
+            </div>
+            <div><label for="publico">Quem vai usar ou visitar? <span class="hint">(opcional)</span></label><input
+                  type="text" id="publico" name="publico"
+                  placeholder="Ex.: clientes da minha região, alunos, funcionários"></div>
+         </fieldset>
+
+         <fieldset>
+            <legend>Recursos desejados</legend>
+            <div><span class="lbl">Marque o que fizer sentido <span class="hint">(pode marcar vários)</span></span>
+               <div class="opts">
+                  <label><input type="checkbox" name="rec" value="Formulário de contato"> Formulário de contato</label>
+                  <label><input type="checkbox" name="rec" value="Botão de WhatsApp"> Botão de WhatsApp</label>
+                  <label><input type="checkbox" name="rec" value="Galeria de fotos"> Galeria de fotos</label>
+                  <label><input type="checkbox" name="rec" value="Login e cadastro de usuários"> Login e
+                     cadastro</label>
+                  <label><input type="checkbox" name="rec" value="Painel administrativo"> Painel administrativo</label>
+                  <label><input type="checkbox" name="rec" value="Catálogo de produtos"> Catálogo de produtos</label>
+                  <label><input type="checkbox" name="rec" value="Pagamentos online"> Pagamentos online</label>
+                  <label><input type="checkbox" name="rec" value="Blog ou notícias"> Blog ou notícias</label>
+                  <label><input type="checkbox" name="rec" value="Mapa e horário de funcionamento"> Mapa e
+                     horários</label>
+               </div>
+            </div>
+            <div><span class="lbl">Você já tem logo, textos e fotos?</span>
+               <div class="opts">
+                  <label><input type="radio" name="mat" value="Tenho tudo pronto"> Tenho tudo</label>
+                  <label><input type="radio" name="mat" value="Tenho parte do material"> Tenho parte</label>
+                  <label><input type="radio" name="mat" value="Preciso de ajuda com o material"> Preciso de
+                     ajuda</label>
+               </div>
+            </div>
+            <div><label for="ref">Sites que você gosta como referência <span
+                     class="hint">(opcional)</span></label><textarea id="ref" name="ref" style="min-height:4.5rem"
+                  placeholder="Cole links ou cite nomes"></textarea></div>
+         </fieldset>
+
+         <fieldset>
+            <legend>Prazo e investimento</legend>
+            <div class="row">
+               <div><label for="prazo">Prazo desejado</label>
+                  <select id="prazo" name="prazo">
+                     <option value="">Selecione</option>
+                     <option>Urgente (até 1 semana)</option>
+                     <option>Até 1 mês</option>
+                     <option>De 1 a 3 meses</option>
+                     <option>Sem pressa</option>
+                  </select>
+               </div>
+               <div><label for="orc">Faixa de orçamento</label>
+                  <select id="orc" name="orc">
+                     <option value="">Selecione</option>
+                     <option>Até R$ 500</option>
+                     <option>R$ 500 a R$ 1.500</option>
+                     <option>R$ 1.500 a R$ 3.000</option>
+                     <option>Acima de R$ 3.000</option>
+                     <option>Prefiro receber uma proposta</option>
+                  </select>
+               </div>
+            </div>
+            <div><label for="obs">Algo mais que eu deva saber? <span class="hint">(opcional)</span></label><textarea
+                  id="obs" name="obs" style="min-height:4.5rem"></textarea></div>
+         </fieldset>
+
+         <div class="btns" id="btns"></div>
+         <p class="note">Suas respostas são usadas só para eu entender e responder o seu pedido.</p>
+         <div id="result" role="status" aria-live="polite"></div>
+      </form>
+   </div>
+
+   <script>
+      (function () {
+         /* CONFIGURAÇÃO (Abel: preencha e salve)
+            WHATSAPP: só números, com 55 + DDD, ex.: "5511999999999"
+            EMAIL: seu e-mail para receber os pedidos, ex.: "voce@gmail.com" */
+         var WHATSAPP = "+5511939175848";
+         var EMAIL = "ams.macenasilva@gmail.com";
+
+         var f = document.getElementById('f'), box = document.getElementById('btns'), res = document.getElementById('result');
+         function val(n) {var e = f.elements[n]; return e && e.value ? e.value.trim() : ""}
+         function many(n) {return Array.prototype.map.call(f.querySelectorAll('[name="' + n + '"]:checked'), function (i) {return i.value}).join(", ")}
+         function build() {
+            var l = ["*Novo pedido de projeto*", "", "*Nome:* " + val('nome'), "*Contato:* " + val('contato')];
+            if (val('empresa')) l.push("*Empresa/projeto:* " + val('empresa'));
+            l.push("", "*Tipo:* " + val('tipo'), "*Ideia:* " + val('desc'));
+            if (val('publico')) l.push("*Público:* " + val('publico'));
+            if (many('rec')) l.push("*Recursos:* " + many('rec'));
+            if (many('mat')) l.push("*Material (logo, textos, fotos):* " + many('mat'));
+            if (val('ref')) l.push("*Referências:* " + val('ref'));
+            if (val('prazo')) l.push("*Prazo:* " + val('prazo'));
+            if (val('orc')) l.push("*Orçamento:* " + val('orc'));
+            if (val('obs')) l.push("*Observações:* " + val('obs'));
+            return l.join("\n");
+         }
+         function ok() {
+            if (val('site')) return false;
+            var good = true, first = null;
+            f.querySelectorAll('[data-f]').forEach(function (w) {
+               var c = w.querySelector('input,select,textarea'); var bad = !c.value.trim();
+               w.classList.toggle('bad', bad); if (bad) {good = false; first = first || c}
+            });
+            if (first) first.focus();
+            return good;
+         }
+         function show(t, extra) {
+            res.style.display = 'block';
+            res.textContent = '';
+            var s = document.createElement('strong'); s.textContent = extra; res.appendChild(s);
+            var p = document.createElement('pre'); p.textContent = t; res.appendChild(p);
+            res.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+         }
+         function copy(t) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {return navigator.clipboard.writeText(t).then(function () {return true}, function () {return false})}
+            return Promise.resolve(false);
+         }
+         function mk(txt, cls, fn) {var b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (cls ? ' ' + cls : ''); b.textContent = txt; b.addEventListener('click', function () {if (ok()) fn(build())}); box.appendChild(b)}
+         if (WHATSAPP) mk('Enviar pelo WhatsApp', '', function (t) {window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(t), '_blank', 'noopener'); show(t, 'Abrindo o WhatsApp. Se não abrir, copie a mensagem abaixo.')});
+         if (EMAIL) mk('Enviar por e-mail', WHATSAPP ? 's' : '', function (t) {location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Pedido de projeto: ' + val('nome')) + '&body=' + encodeURIComponent(t.replace(/\*/g, '')); show(t, 'Abrindo seu aplicativo de e-mail.')});
+         mk('Copiar mensagem', (WHATSAPP || EMAIL) ? 's' : '', function (t) {copy(t).then(function (c) {show(t, c ? 'Mensagem copiada. Envie para mim pelo meu contato.' : 'Copie a mensagem abaixo e envie para mim.')})});
+         f.addEventListener('submit', function (e) {e.preventDefault()});
+      })();
+   </script>
+</body>
+
+</html>
