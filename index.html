@@ -1,144 +1,229 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Spending Control</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Abel Macena da Silva | Desenvolvedor de Sistemas em formação. Transformo ideias em sistemas, interfaces e soluções digitais.">
+  <meta name="theme-color" content="#2B4EFF">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta property="og:title" content="Abel Macena da Silva | Desenvolvedor de Sistemas">
+  <meta property="og:description" content="Desenvolvedor de sistemas em formação. Transformo ideias em sistemas, interfaces e soluções digitais.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dreamxvp.github.io">
 
-  <!-- Estilo -->
+  <title>Abel Macena da Silva | Desenvolvedor de Sistemas em formação</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#topo">Abel Macena</a>
+    <nav aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
+  </div>
+</header>
 
-  <h1>Spending Control</h1>
-  <section class="indicesTop">
-    <div class="indiceCard negativo">
-      <strong>IBOV</strong>
-      <span>-1,34%</span>
-    </div>
-
-    <div class="indiceCard positivo">
-      <strong>CDI</strong>
-      <span>+0,87%</span>
-    </div>
-
-    <div class="indiceCard negativo">
-      <strong>Dólar</strong>
-      <span>-0,45%</span>
-    </div>
-  </section>
-
-  <section class="barraPesquisa">
-    <input type="text" placeholder="Pesquisar ações, ETFs e investimentos">
-  </section>
-
-  <section class="layoutPrincipal">
-
-    <!-- ESQUERDA -->
-    <div class="watchlist">
-      <h3>Mais seguidas</h3>
-      <div id="listaAtivos"></div>
-    </div>
-
-
-    <!-- DIREITA -->
-    <div class="conteudoPrincipal">
-      <section class="card">
-        <h2>📊 Índices em Tempo Real</h2>
-        <div class="indice" id="ibov"></div>
-        <div class="indice" id="dolar"></div>
-        <div class="indice" id="cdi"></div>
-      </section>
-
-      <div class="card graficoPrincipal">
-        <canvas id="graficoRapido"></canvas>
-      </div>
-
-      <div class="card ranking">
-        <h3>Ranking de Investimentos</h3>
-        <div id="resultadoInvestimentos"></div>
+<main id="topo">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Abel Macena <span>da Silva</span></h1>
+      <p class="lead">Desenvolvedor de sistemas em formação. Transformo ideias em sistemas, interfaces e soluções digitais.</p>
+      <div class="btns">
+        <a class="btn p" href="#projetos">Ver projetos</a>
+        <a class="btn s" href="https://github.com/DREAMxVP" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-
-  </section>
-
-
-  <section class="card dashboard">
-
-    <div class="topoComparacao">
-
-      <!-- 🔹 LADO ESQUERDO -->
-      <div class="ladoValores">
-
-        <h2>📊 Comparação de Investimentos</h2>
-
-        <label>Valor mensal</label>
-        <input type="number" id="valorInvestimento" placeholder="Ex: 500">
-
-        <label>Meses</label>
-        <input type="number" id="mesesInvestimento" value="12">
-
-        <!-- Ranking aparece aqui -->
-        <div id="resultadoInvestimentos"></div>
-
-      </div>
-
-      <!-- 🔹 LADO DIREITO -->
-      <div class="ladoGrafico">
-        <canvas id="graficoInvestimentos"></canvas>
-      </div>
-
-    </div>
-    <div id="tradingview_chart"></div>
-
-
-    <hr>
-
-    <!-- 🔹 Crescimento mensal animado -->
-    <h3>📈 Crescimento Mês a Mês</h3>
-    <canvas id="graficoRapido"></canvas>
-
-  </section>
-
-  <section class="card">
-  <h2>💰 Calculadora do Primeiro Milhão</h2>
-
-  <div class="gridMilhao">
-
-    <div>
-      <label>Valor inicial:</label>
-      <input type="number" id="valorInicial" placeholder="0">
-    </div>
-
-    <div>
-      <label>Valor mensal:</label>
-      <input type="number" id="valorMensal" placeholder="0">
-    </div>
-
-    <div>
-      <label>Taxa de juros anual (%):</label>
-      <input type="number" id="taxaJuros" placeholder="8">
-    </div>
-
   </div>
 
-  <button id="calcularMilhao">Calcular</button>
+  <section id="sobre">
+    <div class="wrap">
+      <h2>Sobre mim</h2>
+      <div class="about">
+        <div>
+          <p>Sou estudante do curso Técnico em Desenvolvimento de Sistemas na ETEC e tenho interesse em tecnologia, desenvolvimento web e criação de sistemas.</p>
+          <p>Conheço lógica de programação, HTML, CSS e JavaScript, e coloco isso em prática em projetos próprios voltados a situações reais, como educação financeira, controle de estoque e gerenciamento de cartões.</p>
+          <p>Também tenho base em informática, hardware e redes, o que me ajuda a diagnosticar problemas de software e de máquina. Meu objetivo é atuar como programador, desenvolvedor de sites e sistemas ou técnico de informática.</p>
+        </div>
+        <dl class="facts">
+          <dt>Formação</dt>
+          <dd>Técnico em Desenvolvimento de Sistemas, ETEC (2025, em andamento)</dd>
+          <dt>Foco</dt>
+          <dd>Desenvolvimento web, interfaces e sistemas</dd>
+          <dt>Idiomas</dt>
+          <dd>Português (nativo)</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-  <div id="resultadoMilhao"></div>
+  <section id="projetos">
+    <div class="wrap">
+      <h2>Projetos</h2>
+      <div class="proj">
+        <article class="card big">
+          <h3>SEI: Sistema de Ensino e Investimento</h3>
+          <p>Plataforma de educação financeira para quem tem pouco ou nenhum conhecimento sobre investimentos. Reúne login e cadastro, dashboard, perfil, aulas, quiz, simulador de investimentos, tutor, gráficos e diário do investidor. Acompanha indicadores como IBOV, CDI, dólar, Bitcoin, SELIC e IFIX, com recursos de autenticação e segurança.</p>
+          <ul class="tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Chart.js</li>
+            <li>LocalStorage</li>
+            <li>Claude API</li>
+            <li>Alpha Vantage</li>
+          </ul>
+          <div class="links">
+            <a href="https://dreamxvp.github.io/SEI-Sistema-de-Ensino-e-Investimento/" target="_blank" rel="noopener">Abrir demo</a>
+            <a href="https://github.com/DREAMxVP/SEI-Sistema-de-Ensino-e-Investimento" target="_blank" rel="noopener">Código no GitHub</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Estoque+</h3>
+          <p>Sistema de gerenciamento de estoque para empresas, com cadastro e organização de produtos. Trabalhei na interface: dashboard com cards de indicadores, destaque para o valor do estoque, hierarquia visual clara e melhor uso do espaço da tela.</p>
+          <ul class="tags">
+            <li>Dashboard</li>
+            <li>Interface empresarial</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>KakaComics</h3>
+          <p>Plataforma de quadrinhos e mangás. Participei de melhorias de interface, perfil com banner, publicações rápidas, seguidores, curtidas e descurtidas, marcação automática de capítulos lidos, autenticação em duas etapas e adequações à LGPD.</p>
+          <ul class="tags">
+            <li>Perfil</li>
+            <li>Autenticação</li>
+            <li>LGPD</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Easy Card</h3>
+          <p>Projeto de aplicativo para gerenciar cartões e informações financeiras: contas, saldo, extrato, pagamentos, NFC, PIX e segurança dos dados. Desenvolvido em equipe como proposta de TCC, com orientação do Prof. Cristiano Teixeira.</p>
+          <ul class="tags">
+            <li>Projeto acadêmico</li>
+            <li>Trabalho em equipe</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Android e Google Play</h3>
+          <p>Experiência com Android e Play Console: organização para publicação, configuração de loja, políticas da plataforma, testes, versões e atualizações.</p>
+          <ul class="tags">
+            <li>Play Console</li>
+            <li>Publicação</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <canvas id="graficoMilhao"></canvas>
-</section>
+  <section id="habilidades">
+    <div class="wrap">
+      <h2>Habilidades</h2>
+      <div class="skills">
+        <div>
+          <h3>Desenvolvimento</h3>
+          <ul class="tags">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>JSON</li>
+            <li>Lógica de programação</li>
+            <li>Interfaces</li>
+            <li>GitHub</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Informática</h3>
+          <ul class="tags">
+            <li>Hardware</li>
+            <li>Montagem de computadores</li>
+            <li>Diagnóstico de problemas</li>
+            <li>Sistemas operacionais</li>
+            <li>Redes</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Pessoais</h3>
+          <ul class="tags">
+            <li>Raciocínio lógico</li>
+            <li>Criatividade</li>
+            <li>Resolução de problemas</li>
+            <li>Organização</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="trajetoria">
+    <div class="wrap">
+      <h2>Trajetória</h2>
+      <div class="two">
+        <div>
+          <h3>Experiência</h3>
+          <ul class="tl">
+            <li>
+              <b>Auxiliar de Contabilidade, Jovem Aprendiz</b>
+              <span>TCL SEMP, programa PROJOV<br>julho de 2023 a setembro de 2024</span>
+            </li>
+          </ul>
+          <h3>Cursos</h3>
+          <ul class="tl">
+            <li>
+              <b>Criação de Sites e Outras Plataformas Digitais</b>
+              <span>SENAI</span>
+            </li>
+            <li>
+              <b>Capacitação para o Mercado de Trabalho</b>
+              <span>PROJOV, 165 horas, 2023</span>
+            </li>
+            <li>
+              <b>Informática Básica Corporativa</b>
+              <span>PROJOV, 64 horas</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Formação</h3>
+          <ul class="tl">
+            <li>
+              <b>Técnico em Desenvolvimento de Sistemas</b>
+              <span>ETEC Profª Ermelinda Giannini Teixeira, Centro Paula Souza<br>Desde 2025, em andamento</span>
+            </li>
+            <li>
+              <b>Ensino Médio</b>
+              <span>Concluído em 2023</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="contato">
+    <div class="wrap contact">
+      <h2>Vamos conversar</h2>
+      <p>Estou em busca de oportunidades para aprender e crescer na área de tecnologia. Veja meu código no GitHub.</p>
+      <div class="btns">
+        <a class="btn p" href="https://github.com/DREAMxVP" target="_blank" rel="noopener">github.com/DREAMxVP</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <!-- Script principal -->
-  <script type="module" src="./js/app.js"></script>
-  <script src="https://s3.tradingview.com/tv.js"></script>
+<footer>
+  <div class="wrap">© 2026 Abel Macena da Silva</div>
+</footer>
 
+<script src="./js/script.js"></script>
 </body>
-
 </html>
